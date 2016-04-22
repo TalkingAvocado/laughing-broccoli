@@ -1,0 +1,41 @@
+* laughing-broccoli
+
+This is a test to see how to generate a static site using Hakyll and org-mode.
+
+I should probably get this working with Stack as well, so that it has a reproducible build. 
+
+I am going to write up the procedure that I do here, I need to move it to my workflow or my setup repo. 
+
+-- taken from http://www.stackbuilders.com/news/dr-hakyll-create-a-github-page-with-hakyll-and-circleci
+#+BEGIN_SRC bash
+$ git clone git@github.com:username/repository.git
+$ cd repository/
+$ git checkout --orphan gh-pages
+$ git rm -rf .
+$ git commit --allow-empty -m "Create gh-pages branch"
+$ git push origin gh-pages
+
+#+END_SRC
+
+"Create an orphan branch named hakyll for the source of your site, add the GitHub repository as a submodule at _site, commit, and push:"
+
+#+BEGIN_SRC bash
+
+$ git checkout --orphan hakyll
+$ git rm -rf .
+$ git submodule add git@github.com:username/repository.git _site
+$ git commit -m "Add hakyll branch"
+$ git push -u origin hakyll
+#+END_SRC
+
+Then I installed Hakyll and did the initial steps up to =$ cabal run rebuild= 
+
+Questions:
+- What is a submodule?
+- What is an orphan branch?
+
+  The website here (https://jaspervdj.be/hakyll/tutorials/github-pages-tutorial.html) doesn't use a _site submodule, so is the submodule way better?
+
+  For a project page, what is the purpose of the hakyll branch?
+
+
